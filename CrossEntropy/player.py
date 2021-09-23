@@ -15,7 +15,7 @@ from CEM_Agent import Agent
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 # Test the environment
-env = Arm2DEnv(visualize=False)
+env = Arm2DEnv(visualize=True)
 env.seed(101)
 
 print("======== Information of Observation Space ========")
