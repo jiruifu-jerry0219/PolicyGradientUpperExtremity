@@ -13,6 +13,7 @@ from CEM_Agent import Agent
 
 # Set up CUDA device
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print(device)
 
 # Test the environment
 env = Arm2DEnv(visualize=False)
@@ -31,9 +32,9 @@ print(" - high:", env.action_space.high)
 np.random.seed(101)
 
 
-
-agent = Agent(env).to(device, 64)
-
+#
+agent = Agent(env, 64).to(device)
+#
 n_iterations = 500
 max_t = 1000
 gamma = 1.0
