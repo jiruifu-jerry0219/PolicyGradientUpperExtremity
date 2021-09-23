@@ -49,8 +49,10 @@ class Agent(nn.Module):
         self.set_weights(weights)
         episode_return = 0.0
         state = self.env.reset()
+        data = state.items()
+        state_ary = np.array(data, dtype = 'float64')
         for t in range(max_t):
-            state = torch.from_numpy(state).float().to(device)
+            state = torch.from_numpy(state_ary).float().to(device)
             action = self.forward(state)
             state, reward, done, _ = self.env.step(action)
             episode_return += reward * math.pow(gamma, t)
